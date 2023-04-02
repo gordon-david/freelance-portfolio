@@ -1,12 +1,13 @@
-import { ReactNode, useState } from "react";
+import { Component, ReactNode } from "react";
+import { SVG_CSS3, SVG_HTML5, SVG_Java, SVG_JS, SVG_Linux, SVG_Node, SVG_PostgreSQL, SVG_Python, SVG_React, SVG_Tailwind, SVG_TS } from "./components/icons";
 
 function App() {
     document.body.classList.add("bg-slate-300")
 
     return (
-        <div className="font-mono h-full w-screen text-black">
-                <Navigation />
-                <About />
+        <div className="h-full w-screen text-black">
+            <Navigation />
+            <About />
             <div className="px-2 pt-2 pb-4 mx-auto max-w-screen-md ">
                 <Services />
                 <Contact />
@@ -25,52 +26,52 @@ const Navigation = () => (
 
 /* ABOUT */
 const About = () => (
-    <div className="text-center flex flex-col justify-center mx-auto mb-8">
-        <div className="relative w-full">
-            <Image className="w-full min-w-0 mx-auto max-w-full" src="/static/car.jpg" />
-            <div className="absolute mb-8 right-0 left-0 bottom-0 m-auto text-2xl font-bold text-center font-mono md:text-3xl lg:text-5xl">
-                <h1>David Gordon</h1>
-                <h1>Freelance Developer</h1>
-            </div>
+    <div className="flex flex-col justify-center mx-auto mb-8 font-roboto-mono font-bold bg-slate-600 text-slate-200 w-full">
+        <div className="mx-8 my-8 max-w-screen-sm">
+            <h1 className="text-5xl font-roboto-mono font-bold mb-0">David Gordon</h1>
+            <h2 className="text-lg mb-4">Greetings and Salutations!</h2>
+            <p className="text-base font-normal font-serif">
+                I am a <InlinePill>Software Engineer</InlinePill> focused on <InlinePill>Frontend</InlinePill> and <InlinePill>Backend</InlinePill> development of web technologies. My additional professional interests include <InlinePill>Game Programming</InlinePill>, <InlinePill>System Programming</InlinePill>, and <InlinePill>All Things Linux</InlinePill>.
+            </p>
         </div>
-        <p className="text-lg text-left font-mono md:text-3xl lg:text-5xl">
-            I build things of value for my client's clients. Let's work together to
-            turn your ideas into websites and applications that work.
-        </p>
     </div>
 );
 
 /* SERVICES */
 const Services = () => (
-    <SectionContainer title="Services" id="services" className="" >
-        <div className="flex flex-wrap justify-around">
+    <SectionContainer title="Freelancing Services" id="services" className="" >
+        <p>I offer the following consulting and contract services to help small businesses thrive on the internet.</p>
+        <div className="flex flex-wrap justify-around items-stretch">
             <ServiceCard
                 title="Frontend Development"
-                details="Websites that showcase your business to your customers and clients"
+                details="I want to help you build a website that showcases your business to your customers and clients."
+                techIcons={[SVG_HTML5 , SVG_CSS3 , SVG_React , SVG_JS , SVG_TS , SVG_Tailwind ]}
             />
             <ServiceCard
                 title="Backend Development"
-                details="Websites that showcase your business to your customers and clients"
-            />
-            <ServiceCard
-                title="Landing Pages"
-                details="Websites that showcase your business to your customers and clients"
+                details="Keeping your infrastructure and integration systems happy."
+                techIcons={[SVG_Node, SVG_Python , SVG_Java, SVG_PostgreSQL, SVG_Linux]}
             />
             <ServiceCard
                 title="Website Consultations"
-                details="Websites that showcase your business to your customers and clients"
+                details="I'm always happy to consult with medium and small businesses on performance issues or website updates. Even if you aren't sure what direction to take your website but you know that something needs to change, feel free to reach out!"
             />
         </div>
     </SectionContainer>
 );
 
-const ServiceCard = (props: { title: string; details: string }) => (
-    <div className="max-w-xs my-4">
-        {/* <Image className="w-full" /> */}
-        <h3 className="text-xl text-center mb-8">{props.title}</h3>
-        <p>{props.details}</p>
+const ServiceCard = (props: { techIcons?: any[], title: string; details: string, imageSource?: string }) => (
+    <div className="my-4 w-full sm:w-72 bg-slate-600 p-4 text-slate-200 md:rounded-xl">
+        {(props.imageSource) ? <Image className="w-full" src={props.imageSource} /> : ''}
+        <h3 className="text-2xl font-bold text-center mb-2">{props.title}</h3>
+        <p className="font-serif">{props.details}</p>
+        <div className="relative shrink flex flex-wrap justify-around space-x-6 mt-8">{!props.techIcons?'':props.techIcons.map((Icon) => {
+            return <Icon className="w-12 mb-4"/>
+        })}</div>
     </div>
 );
+
+
 
 /* CONTACT */
 const Contact = () => (
@@ -87,18 +88,20 @@ const Contact = () => (
 
 const Footer = () => (
     <div>
-        <p className="text-center bg-black text-white">
+        <p className="text-center">
             © David Gordon {new Date().getFullYear()}
         </p>
     </div>
 );
 
 /* UTILITY */
+const InlinePill = (props: { children: ReactNode }) => <span className="bg-slate-200 text-slate-600 rounded-sm px-1 ">{props.children}</span>
+
 const SectionContainer = (
     props: { id: string; title: string; className?: string, children: ReactNode },
 ) => (
     <div id={props.id} className={`${props.className}`}>
-        <h1 className="text-center text-3xl font-bold font-mono my-4">
+        <h1 className="text-center text-3xl font-bold font-sans my-4">
             <a id={props.title}>{props.title}</a>
         </h1>
         {props.children}
