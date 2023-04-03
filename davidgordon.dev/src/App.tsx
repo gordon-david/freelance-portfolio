@@ -21,7 +21,7 @@ function App() {
               <Link href="https://www.github.com/gordon-david">github</Link>
             </li>
             <li>
-              <Link href="https://www.underengineered.com">hobby blog</Link>
+              <Link href="https://www.underengineered.dev">hobby blog</Link>
             </li>
           </ul>
         </div>
@@ -31,13 +31,16 @@ function App() {
           <H1>David Gordon, Software Engineer</H1>
           <Prose>
             I'm a software engineer focused on frontend and backend development
-            for web technologies. I'm currently open for full-time and contract
-            development work. My technical and professional interests include
-            System Programming, Game Programming, Math, and All Things Linux.
+            of stable, scalable web technologies. I'm currently open for
+            full-time and contract development work. My technical and
+            professional interests also include System Programming, Game
+            Programming, Math, and All Things Linux.
           </Prose>
-          <Link underline href="mailto:gordopdavid@gmail.com">
-            gordopdavid@gmail.com
-          </Link>
+          <Prose>
+            <Link underline href="mailto:gordopdavid@gmail.com">
+              gordopdavid@gmail.com
+            </Link>
+          </Prose>
         </header>
         <section className="space-y-2">
           <H1>Featured Projects</H1>
@@ -53,25 +56,24 @@ function App() {
 /* UTILITY */
 
 const H1 = (props: { children: string }) => (
-  <h1 className="font-sans mb-4 font-bold text-4xl my-2">
-    {props.children}
-  </h1>
+  <h1 className="font-sans mb-4 font-bold text-4xl my-2">{props.children}</h1>
 );
 
 const Prose = (props: { children: ReactNode }) => (
-	<p className="mb-4">{props.children}</p>
-)
+  <p className="mb-4">{props.children}</p>
+);
 
 const Link = (props: {
   children: ReactNode;
-		underline?: boolean;
+  underline?: boolean;
   href: string;
 }) => (
-  <a className={`${props.underline?'underline ':''}hover:text-red-600`} href={props.href}>
+  <a
+    className={`${props.underline ? "underline " : ""}hover:text-red-600`}
+    href={props.href}
+  >
     {props.children}
   </a>
 );
-
-
 
 export default App;
