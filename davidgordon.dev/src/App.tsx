@@ -30,6 +30,16 @@ const projects: Project[] = [
     },
     img: { src: "/static/photographer-screenshot.png" },
   },
+  {
+    title: "User Account System",
+    description:
+      "This project aims to exhibit a JSON Web Token based authentication scheme using Spring Security. The project includes a simple Vue client for prototyping. The API is written in Java and is unit tested with JUnit. The database is PostgreSQL and is deployed as a container with a seed SQL file. The API exposes three resources aligning with three levels of access roles: Public, User, and Admin.",
+    source: {
+      href: "https://github.com/gordon-david/useraccounts",
+      text: "source",
+    },
+    img: { src: "/static/useraccounts-screenshot.png" },
+  },
 ];
 
 function App() {
@@ -37,7 +47,7 @@ function App() {
 
   return (
     <div className="font-sans font-bold bg-white">
-      <nav className="flex justify-between font-mono font-bold p-4 border-b-2 border-solid border-black">
+      <nav className="max-w-screen-md mx-auto flex justify-between font-mono font-bold p-4 border-b-2 border-solid border-black">
         <Link href="/">david gordon</Link>
         <button onClick={() => setShowMenu(true)}>menu</button>
         <div
@@ -82,10 +92,26 @@ function App() {
         <section className="space-y-2">
           <H1>Featured Projects</H1>
 
-{projects.map(project => <div>
-<div className="hidden sm:block"><ProjectCardLG title={project.title} description={project.description} source={project.source} img={project.img}/></div>
-<div className="sm:hidden"><ProjectCardSM title={project.title} description={project.description} source={project.source} img={project.img}/></div>
-</div>)}
+          {projects.map((project) => (
+            <div key={project.title}>
+              <div className="hidden sm:block">
+                <ProjectCardLG
+                  title={project.title}
+                  description={project.description}
+                  source={project.source}
+                  img={project.img}
+                />
+              </div>
+              <div className="sm:hidden">
+                <ProjectCardSM
+                  title={project.title}
+                  description={project.description}
+                  source={project.source}
+                  img={project.img}
+                />
+              </div>
+            </div>
+          ))}
         </section>
       </main>
     </div>
@@ -99,8 +125,8 @@ const ProjectCardLG = (props: {
   source?: { href: string; text: string };
   demo?: { href: string; text: string };
 }) => (
-  <div className="w-full border-2 border-black flex py-1 px-1">
-    <div className="grow h-60 object-cover bg-gray-300">
+  <div className="w-full border-2 border-blackflex flex py-1 px-1 h-96">
+    <div className="w-2/5 object-cover bg-gray-300">
       {props.img ? (
         <img
           className="w-full h-full object-top object-cover border-2 border-gray-300 bg-gray-300"
