@@ -23,7 +23,7 @@ const projects: Project[] = [
   {
     title: "Photographer (CMS Backed Website)",
     description:
-      "A simple website built with a React client and a Strapi CMS backend. The goal was to provide a simple site for a photographer that allows the client to manage the images on the site without developer intervention. The backend may be easily deployed as a container.",
+      "A website built with a React client and a Strapi CMS backend. The goal was to provide a site for a photographer that allows the client to manage the images on the site without developer intervention. The backend may be easily deployed as a container.",
     source: {
       href: "https://github.com/gordon-david/photographer",
       text: "source",
@@ -33,7 +33,7 @@ const projects: Project[] = [
   {
     title: "User Account System",
     description:
-      "This project aims to exhibit a JSON Web Token based authentication scheme using Spring Security. The project includes a simple Vue client for prototyping. The API is written in Java and is unit tested with JUnit. The database is PostgreSQL and is deployed as a container with a seed SQL file. The API exposes three resources aligning with three levels of access roles: Public, User, and Admin.",
+      "This project aims to exhibit a JSON Web Token based authentication scheme using Spring Security. The project includes a Vue client for prototyping. The API is written in Java and is unit tested with JUnit. The database is PostgreSQL and is deployed as a container with a seed SQL file. The API exposes three resources aligning with three levels of access roles: Public, User, and Admin.",
     source: {
       href: "https://github.com/gordon-david/useraccounts",
       text: "source",
