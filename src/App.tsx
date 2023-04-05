@@ -40,6 +40,19 @@ const projects: Project[] = [
     },
     img: { src: "/static/useraccounts-screenshot.png" },
   },
+  {
+    title: "Personal Website (here)",
+    description: "This is my website, the one you're currently looking at. Feel free to peruse and use the repository!",
+    source: {
+      href: "https://github.com/gordon-david/freelance-portfolio",
+      text: "source",
+    },
+				demo: {
+	href: "/",
+	text: "demo"
+				},
+    img: { src: "/static/personalwebsite-screenshot.png" },
+  },
 ];
 
 function App() {
@@ -99,6 +112,7 @@ function App() {
                   title={project.title}
                   description={project.description}
                   source={project.source}
+                  demo={project.demo}
                   img={project.img}
                 />
               </div>
@@ -107,6 +121,7 @@ function App() {
                   title={project.title}
                   description={project.description}
                   source={project.source}
+                  demo={project.demo}
                   img={project.img}
                 />
               </div>
