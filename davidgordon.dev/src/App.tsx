@@ -31,7 +31,7 @@ function App() {
           </ul>
         </div>
       </nav>
-      <header className="px-4 mt-20 mb-60 max-w-screen-sm mx-auto">
+      <header className="px-4 mt-20 mb-48 max-w-screen-sm mx-auto">
         <H1>David Gordon, Software Engineer</H1>
         <Prose>
           I'm a software engineer focused on frontend and backend development of
@@ -46,7 +46,7 @@ function App() {
           </Link>
         </Prose>
       </header>
-      <main className="px-4 mt-8 mb-8 max-w-screen-sm mx-auto">
+      <main className="px-4 mt-4 mb-8 max-w-screen-sm mx-auto">
         <section className="space-y-2">
           <H1>Featured Projects</H1>
           <ProjectCard
