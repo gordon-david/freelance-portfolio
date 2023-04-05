@@ -42,15 +42,16 @@ const projects: Project[] = [
   },
   {
     title: "Personal Website (here)",
-    description: "This is my website, the one you're currently looking at. Feel free to peruse and use the repository!",
+    description:
+      "This is my website, the one you're currently looking at. Feel free to peruse and use the repository!",
     source: {
       href: "https://github.com/gordon-david/freelance-portfolio",
       text: "source",
     },
-				demo: {
-	href: "/",
-	text: "demo"
-				},
+    demo: {
+      href: "/",
+      text: "demo",
+    },
     img: { src: "/static/personalwebsite-screenshot.png" },
   },
 ];
@@ -82,6 +83,9 @@ function App() {
               <Link href="https://www.linkedin.com/in/david-gordon-71793926a">
                 linked-in
               </Link>
+            </li>
+            <li>
+              <Link href="/static/DavidGordon_resume.pdf">my resume</Link>
             </li>
           </ul>
         </div>
