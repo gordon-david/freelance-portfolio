@@ -1,5 +1,37 @@
 import { useState, ReactNode } from "react";
 
+interface Project {
+  img?: { src: string };
+  title: string;
+  description: string;
+  source?: { href: string; text: string };
+  demo?: { href: string; text: string };
+}
+
+const projects: Project[] = [
+  {
+    title: "Chat Application",
+    description:
+      "An anonymous chat application built using a Java Spring backend, a PostgreSQL database, and a React client. The backend is fully containerized and running in an AWS EC2 instance.",
+    source: {
+      href: "https://github.com/gordon-david/chat",
+      text: "source",
+    },
+    demo: { href: "https://chat.underengineered.dev", text: "demo" },
+    img: { src: "/static/chat-screenshot.png" },
+  },
+  {
+    title: "Photographer (CMS Backed Website)",
+    description:
+      "A simple website built with a React client and a Strapi CMS backend. The goal was to provide a simple site for a photographer that allows the client to manage the images on the site without developer intervention. The backend may be easily deployed as a container.",
+    source: {
+      href: "https://github.com/gordon-david/photographer",
+      text: "source",
+    },
+    img: { src: "/static/photographer-screenshot.png" },
+  },
+];
+
 function App() {
   const [showMenu, setShowMenu] = useState(false);
 
@@ -46,32 +78,55 @@ function App() {
           </Link>
         </Prose>
       </header>
-      <main className="px-4 mt-4 mb-8 max-w-screen-sm mx-auto">
+      <main className="px-4 mt-4 mb-8 max-w-screen-sm mx-auto md:max-w-screen-md">
         <section className="space-y-2">
           <H1>Featured Projects</H1>
-          <ProjectCard
-            title="Chat Application"
-            description="An anonymous chat application built using a Java Spring backend, a PostgreSQL database, and a React client. The backend is fully containerized and running in an AWS EC2 instance."
-            source={{
-              href: "https://github.com/gordon-david/chat",
-              text: "source",
-            }}
-            demo={{ href: "https://chat.underengineered.dev", text: "demo" }}
-            img={{ src: "/static/chat-screenshot.png" }}
-          />
-										<ProjectCard 
-										title="Photographer (CMS Backed Website)" 
-										description="A simple website built with a React client and a Strapi CMS backend. The goal was to provide a simple site for a photographer that allows the client to manage the images on the site without developer intervention. The backend may be easily deployed as a container."
-										source={{href: "https://github.com/gordon-david/photographer", text:"source"}}
-										img={{src:"/static/photographer-screenshot.png"}}
-										/>
+
+{projects.map(project => <div>
+<div className="hidden sm:block"><ProjectCardLG title={project.title} description={project.description} source={project.source} img={project.img}/></div>
+<div className="sm:hidden"><ProjectCardSM title={project.title} description={project.description} source={project.source} img={project.img}/></div>
+</div>)}
         </section>
       </main>
     </div>
   );
 }
 
-const ProjectCard = (props: {
+const ProjectCardLG = (props: {
+  img?: { src: string };
+  title: string;
+  description: string;
+  source?: { href: string; text: string };
+  demo?: { href: string; text: string };
+}) => (
+  <div className="w-full border-2 border-black flex py-1 px-1">
+    <div className="grow h-60 object-cover bg-gray-300">
+      {props.img ? (
+        <img
+          className="w-full h-full object-top object-cover border-2 border-gray-300 bg-gray-300"
+          src={props.img.src}
+          alt=""
+        />
+      ) : null}
+    </div>
+    <div className="w-3/5 p-1">
+      <h3 className="text-center">{props.title}</h3>
+      {props.source ? (
+        <Link href={props.source.href} display="block">
+          {props.source.text}
+        </Link>
+      ) : null}
+      {props.demo ? (
+        <Link href={props.demo.href} display="block">
+          {props.demo.text}
+        </Link>
+      ) : null}
+      <Prose>{props.description}</Prose>
+    </div>
+  </div>
+);
+
+const ProjectCardSM = (props: {
   img?: { src: string };
   title: string;
   description: string;
