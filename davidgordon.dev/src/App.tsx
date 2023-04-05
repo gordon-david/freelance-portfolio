@@ -31,7 +31,7 @@ function App() {
           </ul>
         </div>
       </nav>
-      <header className="mt-20 mb-60 max-w-screen-sm mx-auto">
+      <header className="px-4 mt-20 mb-60 max-w-screen-sm mx-auto">
         <H1>David Gordon, Software Engineer</H1>
         <Prose>
           I'm a software engineer focused on frontend and backend development of
